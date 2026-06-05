@@ -1,31 +1,26 @@
 export default function EmergencySOS() {
-  async function sendEmergency() {
+  function sendSOS() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const lat = position.coords.latitude;
-
         const lon = position.coords.longitude;
 
-        const mapsLink = `https://maps.google.com/?q=${lat},${lon}`;
+        const maps =
+          `https://maps.google.com/?q=${lat},${lon}`;
 
-        const message = `EMERGENCY! I need help. My location: ${mapsLink}`;
-
-        const whatsappLink = `https://wa.me/?text=${encodeURIComponent(message)}`;
-
-        window.open(whatsappLink, "_blank");
-
-        const speech = new SpeechSynthesisUtterance(
-          "Emergency message prepared",
+        window.open(
+          `https://wa.me/?text=${encodeURIComponent(
+            "EMERGENCY! My location: " + maps
+          )}`,
+          "_blank"
         );
-
-        speechSynthesis.speak(speech);
-      },
-
-      (error) => {
-        alert("Location access denied");
-      },
+      }
     );
   }
 
-  return <button onClick={sendEmergency}>Emergency SOS</button>;
+  return (
+    <button onClick={sendSOS}>
+      Emergency SOS
+    </button>
+  );
 }

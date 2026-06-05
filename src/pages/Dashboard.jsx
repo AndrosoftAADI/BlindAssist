@@ -1,42 +1,31 @@
 import CameraFeed from "../components/CameraFeed";
 import VoiceControl from "../components/VoiceControl";
-import ObjectDetection from "../components/ObjectDetection";
-import TrafficLightDetection from "../components/TrafficLightDetection";
 import OCRReader from "../components/OCRReader";
+import ObjectDetection from "../components/ObjectDetection";
 import EmergencySOS from "../components/EmergencySOS";
 
 export default function Dashboard() {
-
   return (
     <div
       style={{
-        textAlign: "center",
+        background: "#120826",
         color: "white",
-        padding: "20px"
+        minHeight: "100vh",
+        textAlign: "center",
+        padding: "20px",
       }}
     >
-      <h1>
-        Blind Assist Dashboard
-      </h1>
+      <h1>Blind Assist Dashboard</h1>
 
       <VoiceControl />
 
+      <CameraFeed />
+
+      <OCRReader />
+
       <ObjectDetection />
 
-      <TrafficLightDetection />
-
-      <CameraFeed />
-      <OCRReader />
       <EmergencySOS />
-
-      <div
-        style={{
-          marginTop: "20px",
-          fontSize: "20px"
-        }}
-      >
-        AI Navigation Active
-      </div>
     </div>
   );
 }
